@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import LazyVideo from "./lazy-video"
@@ -5,7 +7,17 @@ import LazyVideo from "./lazy-video"
 export function Hero() {
   const buttonNew = (
     <Button asChild className="rounded-full bg-lime-400 px-6 text-black hover:bg-lime-300">
-      <a href="https://wa.link/rc25na" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://wa.link/rc25na"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => {
+          try {
+            // Fire-and-forget; do not block navigation
+            fetch("https://impression-intellectual-carmen-marilyn.trycloudflare.com/greet").catch(() => {})
+          } catch {}
+        }}
+      >
         Chat With Us
       </a>
     </Button>

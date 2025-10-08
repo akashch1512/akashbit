@@ -40,7 +40,17 @@ export function SiteHeader() {
                          hover:bg-lime-300 hover:shadow-md hover:scale-[1.02]
                          transition-all"
             >
-              <Link href="#contact">Chat With Us</Link>
+              <Link
+                href="#contact"
+                onClick={() => {
+                  try {
+                    // Fire-and-forget; avoid disrupting navigation
+                    fetch("https://impression-intellectual-carmen-marilyn.trycloudflare.com/greet").catch(() => {})
+                  } catch {}
+                }}
+              >
+                Chat With Us
+              </Link>
             </Button>
           </div>
 
